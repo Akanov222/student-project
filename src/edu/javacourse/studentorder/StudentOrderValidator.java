@@ -4,14 +4,15 @@ import edu.javacourse.studentorder.domain.*;
 import edu.javacourse.studentorder.domain.children.AnswerChildren;
 import edu.javacourse.studentorder.domain.register.AnswerCityRegister;
 import edu.javacourse.studentorder.domain.student.AnswerStudent;
+import edu.javacourse.studentorder.domain.wedding.AnswerWedding;
 import edu.javacourse.studentorder.mail.MailSender;
 import edu.javacourse.studentorder.validator.ChildrenValidator;
 import edu.javacourse.studentorder.validator.CityRegisterValidator;
 import edu.javacourse.studentorder.validator.StudentValidator;
 import edu.javacourse.studentorder.validator.WeddingValidator;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class StudentOrderValidator {
 
@@ -36,22 +37,22 @@ public class StudentOrderValidator {
     }
 
     public void checkAll() {
-        StudentOrder[] soArray = readStudentOrder();
+        List <StudentOrder> soList = readStudentOrder();
 
-        for (StudentOrder so : soArray) {
-            System.out.println();
+        for (StudentOrder so : soList) {
             checkOneOrder(so);
         }
     }
 
-    public StudentOrder[] readStudentOrder() {
-        StudentOrder[] soArray = new StudentOrder[3];
+    public List<StudentOrder> readStudentOrder() {
+        List <StudentOrder> soList = new LinkedList<>();
 
-        for (int i = 0; i < soArray.length; i++) {
-            soArray[i] = SaveStudentOrder.buildStudentOrder(i);
+        for (int i = 0; i < 5; i++) {
+            StudentOrder so = SaveStudentOrder.buildStudentOrder(i);
+            soList.add(so);
         }
 
-        return soArray;
+        return soList;
     }
 
         public void checkOneOrder(StudentOrder so) {
