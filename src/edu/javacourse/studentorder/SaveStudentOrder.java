@@ -5,12 +5,26 @@ import edu.javacourse.studentorder.domain.Adult;
 import edu.javacourse.studentorder.domain.Child;
 import edu.javacourse.studentorder.domain.StudentOrder;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.time.LocalDate;
 
 public class SaveStudentOrder {
 
-    public static void main(String[] args) {
-       StudentOrder so = new StudentOrder();
+    public static void main(String[] args) throws Exception {
+
+        String url = "jdbc:postgresql://localhost:5432/jc_student?user=postgres&password=postgres";
+        Connection conn = DriverManager.getConnection(url);
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM jc_street");
+        while (rs.next()) {
+            System.out.println(rs.getLong(1) + " : " + rs.getString(2));
+        }
+
+//       StudentOrder s = buildStudentOrder(10);
+//       StudentOrder so = new StudentOrder();
 //        long ans = saveStudentOrder(so);
 //        System.out.println(ans);
     }

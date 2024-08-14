@@ -63,7 +63,6 @@ public class StudentOrderValidator {
             sendMail(so);
     }
 
-
     public AnswerCityRegister checkCityRegister(StudentOrder so) {
         return cityRegisterVal.checkCityRegister(so);
     }
