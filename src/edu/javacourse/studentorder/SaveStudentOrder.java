@@ -1,17 +1,16 @@
 package edu.javacourse.studentorder;
 
-import edu.javacourse.studentorder.dao.DictionaryDaoImpl;
+import edu.javacourse.studentorder.dao.StudentOrderDao;
+import edu.javacourse.studentorder.dao.StudentOrderDaoImpl;
 import edu.javacourse.studentorder.domain.*;
-import edu.javacourse.studentorder.domain.wedding.Street;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class SaveStudentOrder {
 
     public static void main(String[] args) throws Exception {
-/*
-        List<Street> d = new DictionaryDaoImpl().findStreets("пр");
+
+/*        List<Street> d = new DictionaryDaoImpl().findStreets("пр");
         for(Street s : d) {
             System.out.println(s.getStreetName());
         }
@@ -25,7 +24,7 @@ public class SaveStudentOrder {
         for(RegisterOffice r : rof) {
             System.out.println(r.getOfficeName());
         }
-*/
+
 
         List<CountryArea> ca1 = new DictionaryDaoImpl().findAreas("");
         for(CountryArea c : ca1) {
@@ -45,13 +44,17 @@ public class SaveStudentOrder {
         List<CountryArea> ca4 = new DictionaryDaoImpl().findAreas("020010010000");
         for(CountryArea c : ca4) {
             System.out.println(c.getAreaId() + ":" + c.getAreaName());
-        }
+        }*/
 
+/*        StudentOrder s = buildStudentOrder(10L);
+        StudentOrder so = new StudentOrder();
+        long ans = saveStudentOrder(so);
+        System.out.println(ans);*/
 
-//        StudentOrder s = buildStudentOrder(10L);
-//        StudentOrder so = new StudentOrder();
-//        long ans = saveStudentOrder(so);
-//        System.out.println(ans);
+        StudentOrder s = buildStudentOrder(10);
+        StudentOrderDao dao = new StudentOrderDaoImpl();
+        Long id = dao.saveStudentOrder(s);
+        System.out.println(id);
     }
 
     public static long saveStudentOrder(StudentOrder studentOrder) {
@@ -80,6 +83,8 @@ public class SaveStudentOrder {
         husband.setIssueDepartment(po1);
         husband.setStudentId("" + (100000 + id));
         husband.setAddress(address);
+        husband.setUniversity(new University(2L, ""));
+        husband.setStudentId("HH12345");
         // Жена
         Adult wife = new Adult("Петрова", "Вероника", "Алекссевна", LocalDate.of(1998, 3, 12));
         wife.setPassportSeria("" + (2000 + id));
@@ -89,6 +94,8 @@ public class SaveStudentOrder {
         wife.setIssueDepartment(po2);
         wife.setStudentId("" + (200000 + id));
         wife.setAddress(address);
+        wife.setUniversity(new University(1L, ""));
+        wife.setStudentId("WW12345");
         // Ребенок1
         Child child1 = new Child("Петрова", "Ирина", "Викторовна", LocalDate.of(2018, 6, 29));
         child1.setCertificateNumber("" + (300000 + id));

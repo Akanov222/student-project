@@ -4,14 +4,12 @@ import edu.javacourse.studentorder.config.Config;
 import edu.javacourse.studentorder.domain.CountryArea;
 import edu.javacourse.studentorder.domain.PassportOffice;
 import edu.javacourse.studentorder.domain.RegisterOffice;
-import edu.javacourse.studentorder.domain.wedding.Street;
+import edu.javacourse.studentorder.domain.Street;
 import edu.javacourse.studentorder.exeption.DaoException;
 
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
-
-import static edu.javacourse.studentorder.config.Config.*;
 
 public class DictionaryDaoImpl implements DictionaryDao {
 
@@ -27,9 +25,9 @@ public class DictionaryDaoImpl implements DictionaryDao {
     // TODO refactoring - Make one method
     private Connection getConnection() throws SQLException {
         Connection con = DriverManager.getConnection(
-                Config.getProperty(DB_URL),
-                Config.getProperty(DB_LOGIN),
-                Config.getProperty(DB_PASSWORD));
+                Config.getProperty(Config.DB_URL),
+                Config.getProperty(Config.DB_LOGIN),
+                Config.getProperty(Config.DB_PASSWORD));
         System.out.println("Connection successful");
         return con;
     }

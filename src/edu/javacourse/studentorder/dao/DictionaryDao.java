@@ -3,7 +3,7 @@ package edu.javacourse.studentorder.dao;
 import edu.javacourse.studentorder.domain.CountryArea;
 import edu.javacourse.studentorder.domain.PassportOffice;
 import edu.javacourse.studentorder.domain.RegisterOffice;
-import edu.javacourse.studentorder.domain.wedding.Street;
+import edu.javacourse.studentorder.domain.Street;
 import edu.javacourse.studentorder.exeption.DaoException;
 
 import java.util.List;

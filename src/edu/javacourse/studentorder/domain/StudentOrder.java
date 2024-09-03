@@ -67,7 +67,6 @@ public class StudentOrder {
         return children;
     }
 
-
     public String getMarriageCertificateId() {
         return marriageCertificateId;
     }

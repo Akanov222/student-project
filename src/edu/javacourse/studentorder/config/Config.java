@@ -11,6 +11,7 @@ public class Config {
     public static final String CR_URL = "cr.url";
 
     private static Properties properties = new Properties();
+
     public synchronized static String getProperty (String name) {
         if (properties.isEmpty()) {
             try (InputStream is = Config.class.getClassLoader()

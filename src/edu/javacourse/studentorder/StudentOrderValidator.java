@@ -1,6 +1,6 @@
 package edu.javacourse.studentorder;
 
-import edu.javacourse.studentorder.domain.*;
+import edu.javacourse.studentorder.domain.StudentOrder;
 import edu.javacourse.studentorder.domain.children.AnswerChildren;
 import edu.javacourse.studentorder.domain.register.AnswerCityRegister;
 import edu.javacourse.studentorder.domain.student.AnswerStudent;
@@ -48,7 +48,7 @@ public class StudentOrderValidator {
         List <StudentOrder> soList = new LinkedList<>();
 
         for (int i = 0; i < 5; i++) {
-            StudentOrder so = SaveStudentOrder.buildStudentOrder(i);
+            StudentOrder so = edu.javacourse.studentorder.SaveStudentOrder.buildStudentOrder(i);
             soList.add(so);
         }
 
@@ -82,4 +82,5 @@ public class StudentOrderValidator {
     public StudentOrder sendMail(StudentOrder so) {
         return mailSender.sendMail(so);
     }
-}
+
+ }

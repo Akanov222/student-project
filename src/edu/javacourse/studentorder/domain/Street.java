@@ -1,4 +1,4 @@
-package edu.javacourse.studentorder.domain.wedding;
+package edu.javacourse.studentorder.domain;
 
 public class Street {
     private Long streetCode;

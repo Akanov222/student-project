@@ -1,11 +1,11 @@
 package edu.javacourse.studentorder.validator.register;
 
+import edu.javacourse.studentorder.exeption.TransportException;
 import edu.javacourse.studentorder.domain.Adult;
 import edu.javacourse.studentorder.domain.Person;
 import edu.javacourse.studentorder.domain.Child;
 import edu.javacourse.studentorder.domain.register.CityRegisterResponse;
 import edu.javacourse.studentorder.exeption.CityRegisterException;
-import edu.javacourse.studentorder.exeption.TransportException;
 
 public class FakeCityRegisterChecker implements CityRegisterChecker {
 

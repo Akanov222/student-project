@@ -2,8 +2,8 @@ package edu.javacourse.studentorder.dao;
 
 import edu.javacourse.studentorder.config.Config;
 import edu.javacourse.studentorder.domain.*;
-import edu.javacourse.studentorder.domain.wedding.Street;
 import edu.javacourse.studentorder.exeption.DaoException;
+
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 import static edu.javacourse.studentorder.config.Config.*;
 
-public class StudentDaoImpl implements StudentOrderDao {
+public class StudentOrderDaoImpl implements StudentOrderDao {
 
     public static final String INSERT_ORDER =
             "INSERT INTO jc_student_order(" +
@@ -100,7 +100,7 @@ public class StudentDaoImpl implements StudentOrderDao {
 
                 // Husband and wife
                 setParamsForAdult(stmt, 3, so.getHusband());
-                setParamsForAdult(stmt, 3, so.getWife());
+                setParamsForAdult(stmt, 18, so.getWife());
 
                 // Marriage
                 stmt.setString(33, so.getMarriageCertificateId());
@@ -117,9 +117,9 @@ public class StudentDaoImpl implements StudentOrderDao {
                 saveChildren(con, so, result);
 
                 con.commit();
-            } catch (SQLException ex) {
+            } catch (SQLException e) {
                 con.rollback();
-                throw ex;
+                throw e;
             }
 
         } catch (SQLException e) {
@@ -146,7 +146,7 @@ public class StudentDaoImpl implements StudentOrderDao {
         stmt.setDate(start + 6, Date.valueOf(adult.getIssueDate()));
         stmt.setLong(start + 7, adult.getIssueDepartment().getOfficeId());
         setParamsForAddress(stmt, start + 8, adult);
-        stmt.setLong(17, adult.getUniversity().getUniversityId());
+        stmt.setLong(start + 13, adult.getUniversity().getUniversityId());
         stmt.setString(start + 14, adult.getStudentId());
 
     }
@@ -176,7 +176,7 @@ public class StudentDaoImpl implements StudentOrderDao {
     }
 
     @Override
-    public List<StudentOrder> getStudentOrders() throws DaoException {
+    public List<StudentOrder> getStudentOrder() throws DaoException {
         return getStudentOrdersOneSelect();
 //        return getStudentOrdersTwoSelect();
     }

@@ -1,7 +1,5 @@
 package edu.javacourse.studentorder.domain;
 
-import edu.javacourse.studentorder.domain.wedding.Street;
-
 public class Address {
 
     private String postCode;
